@@ -1,0 +1,52 @@
+<div class="container container-fluid">
+    <div class="row p-4 mt-4">
+
+        <form>
+            <div class="form-group">
+                <div class="col-12">
+                    <label for="basic-url" class="form-label">
+                        <h3>Formulario de registro de operacion</h3>
+                    </label>
+                </div>
+                <div class="col-12">
+                    <label class="p-2">Concepto</label>
+                    <div class="input-group mb-3">
+                        <input type="text" [(ngModel)]="data.concepto" name="concepto" class="form-control"
+                            aria-label="Concepto" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="col-8">
+                    <label class="p-2">Monto</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>
+                        <input id="monay" type="text right" [(ngModel)]="data.monto" name="monto" class="form-control"
+                            placeholder="0" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="col-6">
+                        <label class="p-2">Fecha</label>
+                    </div>
+                    <div class="col-6">
+                        <p>{{ data.fecha | date:"yyyy-MM-dd"}}</p>
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="row  align-items-end">
+                        <div class="col-4">
+                            <label class="p-2">Tipo de operacion</label>
+                        </div>
+                        <div class="col-4">
+                            <p>{{data.tipo}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-secondary btn-lg" (click)="updateData()">Guardar dato
+                modificado</button>
+        </form>
+    </div>
+</div>

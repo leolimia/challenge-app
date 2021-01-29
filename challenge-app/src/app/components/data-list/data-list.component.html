@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="row justify-content-md-center mt-4">
+        <div class="d-flex justify-content-center">
+            <table class="table table-striped table-hover table-bordered">
+
+                <thead>
+                    <tr>
+                        <th scope=" col">Id</th>
+                        <th scope="col">Concepto</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Tipo</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of dataList">
+                    <tr>
+                        <td scope="row">{{data.id}}</td>
+                        <td>{{data.concepto}}</td>
+                        <td> {{data.monto | currency: 'USD'}} </td>
+                        <td>{{data.fecha | date:'dd/MM/yyyy HH:mm'}} Hs</td>
+                        <td>{{data.tipo}}</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

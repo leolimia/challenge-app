@@ -1,0 +1,92 @@
+<div class="container container-fluid">
+    <div class="row p-4 mt-4">
+        <div class="alert alert-success" role="alert" *ngIf="success == true">
+            A simple success alert—check it out!
+        </div>
+        <form>
+            <div class="form-group">
+                <div class="col-12">
+                    <label for="basic-url" class="form-label">
+                        <h3>Formulario de registro de operacion</h3>
+                    </label>
+                </div>
+                <div class="col-12">
+                    <label class="p-2">Concepto</label>
+                    <div class="input-group mb-3">
+                        <input type="text" [(ngModel)]="data.concepto" name="concepto" class="form-control"
+                            aria-label="Concepto" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="col-8">
+                    <label class="p-2">Monto</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>
+                        <input id="monay" type="text right" [(ngModel)]="data.monto" name="monto" class="form-control"
+                            placeholder="0" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="col-6">
+                        <label class="p-2">Fecha</label>
+                    </div>
+                    <div class="col-6">
+                        <p>{{currentDate | date:"yyyy-MM-dd"}}</p>
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="row  align-items-end">
+                        <div class="col-4">
+                            <label class="p-2">Tipo de operacion</label>
+                        </div>
+                        <div class="col-6 ">
+                            <div class="input-group mb-3 ">
+                                <select class="form-select p-1" [(ngModel)]="data.tipo"
+                                    aria-label="Default select example" name="option">
+                                    <option value="">Seleccionar</option>
+                                    <option value="ingreso">Igreso</option>
+                                    <option value="egreso">Egreso</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-secondary btn-lg" (click)="saveData()">Guardar dato</button>
+        </form>
+
+    </div>
+
+    <div class="row justify-content-md-center mt-4">
+        <div class="d-flex justify-content-center">
+            <table class="table table-striped table-hover table-bordered">
+
+                <thead>
+                    <tr>
+                        <th scope=" col">Id</th>
+                        <th scope="col">Concepto</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Tipo</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let data of dataList">
+                    <tr>
+                        <td scope="row">{{data.id}}</td>
+                        <td>{{data.concepto}}</td>
+                        <td> {{data.monto | currency: 'USD'}} </td>
+                        <td>{{data.fecha | date:'dd/MM/yyyy HH:mm'}} Hs</td>
+                        <td>{{data.tipo}}</td>
+                        <td> <button class="btn btn-danger" (click)="deleteInfo(data.id)">Borrar</button></td>
+                        <td> <button [routerLink]="['/users/edit', data.id]" class="btn btn-info">Editar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <button class="btn btn-info btn-lg m-3" (click)="comeBack()">Volver</button>
+</div>
