@@ -1,0 +1,70 @@
+<div class="container container-fluid">
+    <form #dataForm="ngForm" class="row p-4 mt-4 form-horizontal">
+
+        <div class="col-12">
+            <label for="basic-url" class="form-label">
+                <h3>Formulario de registro de operacion</h3>
+            </label>
+        </div>
+        <div class="form-group">
+            <div class="col-12">
+                <label class="p-2" for="concepto">Concepto</label>
+                <div class="input-group mb-3">
+                    <input type="text" [(ngModel)]="data.concepto" name="concepto" required class="form-control"
+                        aria-label="Concepto" aria-describedby="basic-addon1">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-8">
+                <label class="p-2" for="monto">Monto</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input id="monay" type="text right" name="monto" [(ngModel)]="data.monto" required name="monto"
+                        class="form-control" placeholder="0" aria-label="Amount (to the nearest dollar)">
+                    <span class="input-group-text">.00</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-12 ">
+                <div class="row">
+                    <div class="col-4 ml-0 pl-0 text-center">
+                        <label class="p-2">Fecha (*)</label>
+                    </div>
+                    <div class="col-8">
+                        <span class="input-group-text">
+                            {{
+                            data.fecha | date:'dd/MM/yyyy HH:mm'}}
+                            Hs
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <div class="row  align-items-center">
+                    <div class="col-6">
+                        <label class="p-2">Tipo de operacion (*)</label>
+                    </div>
+                    <div class="col-4">
+                        <span class="input-group-text ">
+                            {{data.tipo}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <p>(*) Estos valores no son modificables</p>
+        </div>
+
+        <button type="submit" class="btn btn-secondary btn-lg" (click)="updateData()"
+            [disabled]="!dataForm.form.valid">Guardar
+            dato
+            modificado</button>
+    </form>
+</div>
